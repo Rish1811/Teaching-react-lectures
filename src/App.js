@@ -1,17 +1,52 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
 import Footer from './mycomponent/footer';
-import Todolist from './mycomponent/todolist';
+//import Todolist from './mycomponent/todolist';
 import Header from './mycomponent/header';
+import Todos  from './mycomponent/todos';
 
 function App() {
+
+  const onDelete=(todo)=>{
+    console.log("hello i am delete button",todo);
+    //in the react this splice is not working yet.
+    // let index=todo.indexOf(todo);
+    // todo.splice(index,1);
+    setTodos(todo.filter((e)=>{
+      return e!==todo;
+    }));
+  }
+
+let [todo ,setTodos]=useState([
+  {
+    sno: 1,
+    title: "The TOdo list UI design",
+    desc:"The task for the design the todolist"
+  },
+   {
+    sno: 2,
+    title: "The footer design",
+    desc:"The task for the design the Footer"
+  },
+   {
+    sno: 3,
+    title: "The Sinup page design",
+    desc:"The task for the design the signup"
+  },
+   {
+    sno: 4,
+    title: "The Clock design",
+    desc:"The task for the design the Clock"
+  }
+]);
+
   return (
  <>
- <Header/>
+ <Header title="TOdo list" searchbar={true} />
 
- <Todolist/>
+ <Todos todos={todo} Deletebtn={onDelete} />
 
- <Footer/>
+ <Footer  />
 
  </>
   );
