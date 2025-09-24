@@ -37,6 +37,11 @@ let [todo ,setTodos]=useState([
     sno: 4,
     title: "The Clock design",
     desc:"The task for the design the Clock"
+  },
+   {
+    sno: 5,
+    title: "The Clock design",
+    desc:"The task for the design the Clock"
   }
 ]);
 
