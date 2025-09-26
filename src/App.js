@@ -4,18 +4,30 @@ import Footer from './mycomponent/footer';
 //import Todolist from './mycomponent/todolist';
 import Header from './mycomponent/header';
 import Todos  from './mycomponent/todos';
-
+import AddTodo from './mycomponent/addtodo';
 function App() {
 
-  const onDelete=(todo)=>{
-    console.log("hello i am delete button",todo);
+  const onDelete=(t)=>{
+    console.log("hello i am delete button",t);
     //in the react this splice is not working yet.
     // let index=todo.indexOf(todo);
     // todo.splice(index,1);
     setTodos(todo.filter((e)=>{
-      return e!==todo;
+      return e!==t;
     }));
   }
+
+const addTodo=(title,desc)=>{
+  console.log("The submit button is clicked ",title,desc);
+  let sno=todo[todo.length-1].sno + 1;
+  const mytodo={
+    sno:sno,
+    title:title,
+    desc:desc
+  }
+  setTodos([...todo,mytodo]);
+  console.log(mytodo);
+}
 
 let [todo ,setTodos]=useState([
   {
@@ -48,7 +60,7 @@ let [todo ,setTodos]=useState([
   return (
  <>
  <Header title="TOdo list" searchbar={true} />
-
+  <AddTodo addTodo={addTodo}/>
  <Todos todos={todo} Deletebtn={onDelete} />
 
  <Footer  />
