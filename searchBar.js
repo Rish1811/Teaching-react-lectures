@@ -1,0 +1,24 @@
+import React,{useState} from 'react'
+
+ export default function SearchBar({onSearch}) {
+  const [query, setquary]=useState("");
+
+
+   const handleSubmit=(e)=>{
+    e.preventDefault();
+    if(query.trim()!==""){
+      onSearch(query);
+    }
+   };
+
+  return (
+   <form onClick={handleSubmit} >
+    <input type="text" placeholder='Search movies....'  value={query} onChange={(e)=>setquary(e.target.value)}/>
+    <button type='submit'>Search</button>
+
+
+
+   </form>
+  )
+}
+
